@@ -26,7 +26,7 @@
 	<title>Appwrite Makers - {username}</title>
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`Appwrite Makers - ${username}`} />
-	<meta property="og:image" content={`http://localhost:2080/cards/makers/${username}`} />
+	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
 </svelte:head>
 
 <div class="layout">
