@@ -40,7 +40,6 @@
 
 	$: src = walter ? WalterCard : `https://stage.appwrite.io/cards/makers/${username}`;
 	$: style = `transform: perspective(1000px) rotateY(${degreeX}deg) rotateX(${degreeY}deg)`;
-
 	$: if (src) {
 		fetchImage();
 	}
