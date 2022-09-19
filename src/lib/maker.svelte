@@ -10,7 +10,7 @@
 	const screenWidth: number = globalThis.screen?.width / 2;
 	const screenHeight: number = globalThis.screen?.height / 2;
 
-	let image: string;
+	let loaded: boolean;
 	let degreeX: number = 0;
 	let degreeY: number = 0;
 
@@ -29,19 +29,22 @@
 	$: style = `transform: perspective(1000px) rotateY(${degreeX}deg)  rotateX(${degreeY}deg)`;
 
 	onMount(async () => {
-        const response = await fetch(src, {
-            mode: 'no-cors'
-        });
-        const blob = await response.blob();
-        image = URL.createObjectURL(blob);
+		/**
+		 * Preload image.
+		 */
+		const response = await fetch(src, {
+			mode: 'no-cors'
+		});
+		await response.blob();
+		loaded = true;
 	});
 </script>
 
 <svelte:body on:mousemove={mousemove} />
 
 <figure>
-	{#if image}
-		<img src={image} alt={`GitHub ${username}`} style={fancy3d ? style : ''} />
+	{#if loaded}
+		<img {src} alt={`GitHub ${username}`} style={fancy3d ? style : ''} in:fade />
 	{/if}
 	<div class="gradient" />
 </figure>
