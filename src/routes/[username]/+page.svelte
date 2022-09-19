@@ -9,8 +9,8 @@
 
 <svelte:head>
 	<title>Appwrite Makers - {username}</title>
-	<meta property="og:title" content="The Rock" />
 	<meta property="og:type" content="website" />
+	<meta property="og:title" content={`Appwrite Makers - ${username}`} />
 	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
 </svelte:head>
 
@@ -21,7 +21,7 @@
 		<ul>
 			<li><a href="#/"><Twitter />tweet it</a></li>
 			<li><a href="#/"><Linkedin /> post it</a></li>
-			<li><a href="#/"><Link /> share link</a></li>
+			<li><a href={`/${username}`} target="_blank"><Link /> share link</a></li>
 		</ul>
 	</div>
 </div>
