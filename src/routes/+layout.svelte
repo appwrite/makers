@@ -34,6 +34,7 @@
 			max-width: 1285px;
 			width: 100%;
 			min-height: calc(100vh - 95px);
+			flex-wrap: wrap;
 		}
 	}
 </style>

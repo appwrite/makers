@@ -1,37 +1,80 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import Button from '$lib/button.svelte';
 	import Link from '$lib/link.svelte';
 	import Linkedin from '$lib/linkedin.svelte';
 	import Maker from '$lib/maker.svelte';
+	import Modal from '$lib/modal.svelte';
 	import Twitter from '$lib/twitter.svelte';
-	const username = $page.params.username;
+	import Create from '../create.svelte';
+
+	$: username = $page.params.username;
+	$: shareTwitter = encodeURI(
+		`We are all the makers of Appwrite! Open source allows all of us to collaborate and build better software together!\n\nJoin us in celebrating Appwrite 1.0 on Product Hunt 😺\nhttps://appwrite.io/product-hunt\n\nYou can check out my maker card here:  https://makers.appwrite.io/${username}`
+	);
+
+	$: embed = `<a href="${globalThis.location?.href}"">
+    <img src="https://stage.appwrite.io/cards/makers/${username}" alt="Appwrite Maker - ${username}" />
+</a>`;
+
+	async function copy() {
+		await navigator.clipboard.writeText(embed);
+	}
 </script>
 
 <svelte:head>
 	<title>Appwrite Makers - {username}</title>
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`Appwrite Makers - ${username}`} />
-	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
+	<meta property="og:image" content={`http://localhost:2080/cards/makers/${username}`} />
 </svelte:head>
 
 <div class="layout">
 	<p>Thank You for Creating Appwrite With Us</p>
 	<div class="result">
-		<Maker {username} fancy3d />
+		<Maker {username} fancy3d top />
 		<ul>
-			<li><a href="#/"><Twitter />tweet it</a></li>
-			<li><a href="#/"><Linkedin /> post it</a></li>
-			<li><a href={`/${username}`} target="_blank"><Link /> share link</a></li>
+			<li>
+				<a href={`https://twitter.com/intent/tweet?text=${shareTwitter}`}><Twitter />tweet it</a>
+			</li>
+			<li>
+				<a href="#/"><Linkedin />post it</a>
+			</li>
+			<li>
+				<Modal>
+					<pre>{embed}</pre>
+					<Button on:click={copy}>copy</Button>
+					<svelte:fragment slot="trigger">
+						<span class="link" href={`/${username}`}><Link />embed code</span>
+					</svelte:fragment>
+				</Modal>
+			</li>
 		</ul>
 	</div>
 </div>
+<div class="create">
+	<Create full />
+</div>
+
+<Modal />
 
 <style lang="scss">
+	div.create {
+		border-top: 1px solid #373b4d;
+		padding-top: 56px;
+	}
 	p {
 		font-weight: 600;
 		font-size: 48px;
 		line-height: 72px;
 		color: #fcfcff;
+	}
+	pre {
+		overflow: scroll;
+		color: #fcfcff;
+	}
+	span.link {
+		cursor: pointer;
 	}
 	div.layout {
 		display: grid;
@@ -40,6 +83,7 @@
 		grid-template-areas: '. .';
 		align-items: center;
 		gap: 36px;
+		padding: 48px 0;
 
 		div.result {
 			display: flex;
@@ -52,7 +96,8 @@
 				align-items: center;
 				gap: 48px;
 				li {
-					a {
+					a,
+					.link {
 						color: #ffffff;
 						font-family: 'Inter';
 						font-style: normal;
