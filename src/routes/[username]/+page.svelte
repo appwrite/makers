@@ -18,7 +18,7 @@
 	);
 
 	$: embed = `<a href="${globalThis.location?.href}">
-    <img src="https://stage.appwrite.io/cards/makers/${username}" alt="${username}'s Maker Card" />
+    <img src="https://appwrite.io/cards/makers/${username}" alt="${username}'s Maker Card" />
 </a>`;
 
 	async function copy() {
@@ -38,7 +38,7 @@
 	<title>{username}'s Maker Card</title>
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`${username}'s Maker Card`} />
-	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
+	<meta property="og:image" content={`https://appwrite.io/cards/makers/${username}`} />
 	<meta
 		property="og:image:alt"
 		content={`Appwrite Makers Card with ${username}'s photo and GitHub username.`}

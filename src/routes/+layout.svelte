@@ -1,5 +1,9 @@
 <script lang="ts">
 	import Header from '$lib/header.svelte';
+	import { browser } from '$app/environment';
+	import { plausible } from '$lib/analytics';
+
+	plausible?.enableAutoPageviews();
 </script>
 
 <svelte:head>

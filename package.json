@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@fontsource/inter": "^4.5.12",
 		"@fontsource/poppins": "^4.5.9",
+		"plausible-tracker": "^0.3.8",
 		"sass": "^1.54.9"
 	}
 }
