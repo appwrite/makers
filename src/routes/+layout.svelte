@@ -11,6 +11,11 @@
 		property="og:description"
 		content="Appwrite was built by all of us! Celebrate Appwrite 1.0 by grabbing your own unique Appwrite Maker card."
 	/>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="Appwrite" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@appwrite" />
+	<meta name="twitter:creator" content="@appwrite" />
 </svelte:head>
 
 <Header />

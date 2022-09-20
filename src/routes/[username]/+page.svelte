@@ -13,7 +13,7 @@
 	);
 
 	$: embed = `<a href="${globalThis.location?.href}"">
-    <img src="https://stage.appwrite.io/cards/makers/${username}" alt="Appwrite Maker - ${username}" />
+    <img src="https://stage.appwrite.io/cards/makers/${username}" alt="${username}'s Maker Card" />
 </a>`;
 
 	async function copy() {
@@ -26,15 +26,10 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`${username}'s Maker Card`} />
 	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:site_name" content="Appwrite" />
 	<meta
 		property="og:image:alt"
 		content={`Appwrite Makers Card with ${username}'s photo and GitHub username.`}
 	/>
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@appwrite" />
-	<meta name="twitter:creator" content="@appwrite" />
 </svelte:head>
 
 <div class="layout">
