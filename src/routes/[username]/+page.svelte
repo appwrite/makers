@@ -23,7 +23,7 @@
 	async function copy() {
 		await navigator.clipboard.writeText(embed);
 		copyButton = 'copied';
-		setTimeout(() => copyButton = 'copy', 3500);
+		setTimeout(() => (copyButton = 'copy'), 3500);
 	}
 
 	afterNavigate(({ from, type }) => {
