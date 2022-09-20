@@ -26,6 +26,15 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`${username}'s Maker Card`} />
 	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="Appwrite" />
+	<meta
+		property="og:image:alt"
+		content={`Appwrite Makers Card with ${username}'s photo and GitHub username.`}
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@appwrite" />
+	<meta name="twitter:creator" content="@appwrite" />
 </svelte:head>
 
 <div class="layout">
@@ -38,9 +47,7 @@
 			</li>
 			<li>
 				<Modal>
-					<svelte:fragment slot="title">
-						Embed Code
-					</svelte:fragment>
+					<svelte:fragment slot="title">Embed Code</svelte:fragment>
 					<pre>{embed}</pre>
 					<Button on:click={copy}>copy</Button>
 					<svelte:fragment slot="trigger">
