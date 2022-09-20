@@ -11,6 +11,7 @@
 </header>
 
 <style lang="scss">
+	@use 'mixins';
 	header {
 		height: 94px;
 		display: flex;
@@ -21,6 +22,9 @@
 		nav {
 			max-width: 1285px;
 			width: 100%;
+			@include mixins.mobile {
+				text-align: center;
+			}
 			img {
 				max-height: 32px;
 			}

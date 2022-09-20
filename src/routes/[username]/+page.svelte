@@ -127,6 +127,10 @@
 				align-items: center;
 				gap: 48px;
 				padding: 0;
+
+				@include mixins.mobile {
+					flex-direction: column;
+				}
 				li {
 					a,
 					.link {
