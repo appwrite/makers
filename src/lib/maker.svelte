@@ -39,7 +39,7 @@
 		image = URL.createObjectURL(await response.blob());
 	}
 
-	$: src = walter ? WalterCard : `https://stage.appwrite.io/cards/makers/${username}`;
+	$: src = walter ? WalterCard : `https://stage.appwrite.io/cards/makers/${username}?width=600&height=364`;
 	$: style = `transform: perspective(1000px) rotateY(${degreeX}deg) rotateX(${degreeY}deg)`;
 	$: if (src) {
 		fetchImage();
