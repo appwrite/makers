@@ -10,7 +10,8 @@
 
 	const screenWidth: number = globalThis.screen?.width / 2;
 	const screenHeight: number = globalThis.screen?.height / 2;
-	const isTouchDevice = browser && ('ontouchstart' in globalThis || globalThis.navigator.maxTouchPoints > 0);
+	const isTouchDevice =
+		browser && ('ontouchstart' in globalThis || globalThis.navigator.maxTouchPoints > 0);
 
 	let image: string | null;
 	let degreeX: number = 0;
@@ -39,7 +40,9 @@
 		image = URL.createObjectURL(await response.blob());
 	}
 
-	$: src = walter ? WalterCard : `https://stage.appwrite.io/cards/makers/${username}?width=600&height=364`;
+	$: src = walter
+		? WalterCard
+		: `https://stage.appwrite.io/cards/makers/${username}?width=600&height=364`;
 	$: style = `transform: perspective(1000px) rotateY(${degreeX}deg) rotateX(${degreeY}deg)`;
 	$: if (src) {
 		fetchImage();
@@ -81,7 +84,6 @@
 		top: calc(50% - 150px);
 		left: 50%;
 		filter: blur(150px);
-
 
 		@include mixins.mobile {
 			display: none;
