@@ -1,12 +1,16 @@
 <script lang="ts">
 	import Button from './button.svelte';
+	import X from './x.svelte';
 
 	let dialog: HTMLDialogElement;
 </script>
 
 <dialog bind:this={dialog}>
+	<header>
+		<h2><slot name="title" /></h2>
+		<X on:click={() => dialog.close()} />
+	</header>
 	<slot />
-	<Button on:click={() => dialog.close()}>close</Button>
 </dialog>
 <span on:click={() => dialog.showModal()}>
 	<slot name="trigger" />
@@ -22,7 +26,18 @@
 		border-radius: 16px;
 
 		&::backdrop {
-			background: rgba(0, 0, 0, .5);
+			background: rgba(0, 0, 0, 0.5);
+		}
+		header {
+			color: #fcfcff;
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			align-content: center;
+
+			h2 {
+				margin-top: 0;
+			}
 		}
 	}
 </style>

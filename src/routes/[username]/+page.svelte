@@ -42,6 +42,9 @@
 			</li>
 			<li>
 				<Modal>
+					<svelte:fragment slot="title">
+						Embed Code
+					</svelte:fragment>
 					<pre>{embed}</pre>
 					<Button on:click={copy}>copy</Button>
 					<svelte:fragment slot="trigger">
@@ -77,6 +80,7 @@
 	pre {
 		overflow: scroll;
 		color: #fcfcff;
+		line-height: 150%;
 	}
 	span.link {
 		cursor: pointer;

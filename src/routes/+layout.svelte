@@ -29,6 +29,7 @@
 		font-family: 'Poppins', sans-serif;
 		font-weight: 400;
 		color: #e8e9f0;
+		overflow-x: hidden;
 	}
 
 	main {

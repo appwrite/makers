@@ -72,7 +72,7 @@
 	}
 
 	.gradient {
-		position: fixed;
+		position: absolute;
 		width: 792px;
 		height: 310px;
 		background: linear-gradient(90deg, rgba(100, 227, 255, 0.7) 0%, rgba(145, 146, 255, 0.7) 100%);
@@ -81,6 +81,7 @@
 		top: calc(50% - 150px);
 		left: 50%;
 		filter: blur(150px);
+
 
 		@include mixins.mobile {
 			display: none;
