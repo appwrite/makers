@@ -3,9 +3,7 @@
 	import { browser } from '$app/environment';
 	import { plausible } from '$lib/analytics';
 
-	if (browser) {
-		plausible?.enableAutoPageviews();
-	}
+	plausible?.enableAutoPageviews();
 </script>
 
 <svelte:head>
