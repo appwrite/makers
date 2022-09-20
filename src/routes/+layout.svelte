@@ -2,6 +2,13 @@
 	import Header from '$lib/header.svelte';
 </script>
 
+<svelte:head>
+	<meta
+		name="description"
+		content="Appwrite was built by all of us! Celebrate Appwrite 1.0 by grabbing your own unique Appwrite Maker card."
+	/>
+</svelte:head>
+
 <Header />
 <main>
 	<div class="container">

@@ -10,13 +10,14 @@
 
 	const screenWidth: number = globalThis.screen?.width / 2;
 	const screenHeight: number = globalThis.screen?.height / 2;
+	const isTouchDevice = browser && ('ontouchstart' in globalThis || globalThis.navigator.maxTouchPoints > 0);
 
 	let image: string | null;
 	let degreeX: number = 0;
 	let degreeY: number = 0;
 
 	function mousemove(event: MouseEvent) {
-		if (!fancy3d) {
+		if (!fancy3d || isTouchDevice) {
 			return;
 		}
 
@@ -55,16 +56,23 @@
 </figure>
 
 <style lang="scss">
+	@use 'mixins';
+
 	figure {
 		min-height: 365px;
+		margin: 0;
 		img {
 			height: 350px;
 			width: auto;
+			@include mixins.mobile {
+				height: auto;
+				width: 90vw;
+			}
 		}
 	}
 
 	.gradient {
-		position: absolute;
+		position: fixed;
 		width: 792px;
 		height: 310px;
 		background: linear-gradient(90deg, rgba(100, 227, 255, 0.7) 0%, rgba(145, 146, 255, 0.7) 100%);
@@ -74,6 +82,9 @@
 		left: 50%;
 		filter: blur(150px);
 
+		@include mixins.mobile {
+			display: none;
+		}
 		&.top {
 			top: calc(25% - 150px);
 		}
