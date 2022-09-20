@@ -2,7 +2,6 @@
 	import { page } from '$app/stores';
 	import Button from '$lib/button.svelte';
 	import Link from '$lib/link.svelte';
-	import Linkedin from '$lib/linkedin.svelte';
 	import Maker from '$lib/maker.svelte';
 	import Modal from '$lib/modal.svelte';
 	import Twitter from '$lib/twitter.svelte';
@@ -36,9 +35,6 @@
 		<ul>
 			<li>
 				<a href={`https://twitter.com/intent/tweet?text=${shareTwitter}`}><Twitter />tweet it</a>
-			</li>
-			<li>
-				<a href="#/"><Linkedin />post it</a>
 			</li>
 			<li>
 				<Modal>
