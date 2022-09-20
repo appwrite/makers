@@ -24,7 +24,7 @@
 <svelte:head>
 	<title>{username}'s Maker Card</title>
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content={`Appwrite Makers - ${username}`} />
+	<meta property="og:title" content={`${username}'s Maker Card`} />
 	<meta property="og:image" content={`https://stage.appwrite.io/cards/makers/${username}`} />
 </svelte:head>
 
