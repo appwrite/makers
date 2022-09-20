@@ -16,7 +16,7 @@
 		`We are all the makers of Appwrite! Open source allows all of us to collaborate and build better software together!\n\nJoin us in celebrating Appwrite 1.0 on Product Hunt 😺\nhttps://appwrite.io/product-hunt\n\nYou can check out my maker card here: https://makers.appwrite.io/${username}`
 	);
 
-	$: embed = `<a href="${globalThis.location?.href}"">
+	$: embed = `<a href="${globalThis.location?.href}">
     <img src="https://stage.appwrite.io/cards/makers/${username}" alt="${username}'s Maker Card" />
 </a>`;
 
