@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('index page available', async ({ page }) => {
+test('form will redirect and display card', async ({ page }) => {
 	await page.goto('/');
 	expect(await page.locator('input').fill('TorstenDittmann'));
 	expect(await page.locator('button').click());
