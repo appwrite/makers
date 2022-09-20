@@ -79,9 +79,12 @@
 	figure {
 		min-height: 365px;
 		margin: 0;
+		transform: translateZ(0);
+
 		img {
 			height: 350px;
 			width: auto;
+
 			@include mixins.mobile {
 				height: auto;
 				width: 90vw;
