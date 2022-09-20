@@ -8,15 +8,21 @@
 	<slot />
 	<Button on:click={() => dialog.close()}>close</Button>
 </dialog>
-<span on:click={() => dialog.show()}>
+<span on:click={() => dialog.showModal()}>
 	<slot name="trigger" />
 </span>
 
 <style lang="scss">
 	dialog {
-		top: 50%;
+		width: auto;
 		max-width: 640px;
-		background-color: #14141f;
-		border: none;
+		height: 250px;
+		background-color: #1b1b28;
+		border: 1px solid #282a3b;
+		border-radius: 16px;
+
+		&::backdrop {
+			background: rgba(0, 0, 0, .5);
+		}
 	}
 </style>
