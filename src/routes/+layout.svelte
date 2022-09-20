@@ -1,5 +1,18 @@
+<script context="module" lang="ts">
+	import { browser } from '$app/environment';
+
+	export const plausible = Plausible({
+		domain: 'makers.appwrite.io'
+	});
+
+	if (browser) {
+		plausible.enableAutoPageviews();
+	}
+</script>
+
 <script lang="ts">
 	import Header from '$lib/header.svelte';
+	import Plausible from 'plausible-tracker';
 </script>
 
 <svelte:head>

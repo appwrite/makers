@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { plausible } from './+layout.svelte';
 	import Button from '$lib/button.svelte';
 	import Card from '$lib/card.svelte';
 
@@ -8,6 +9,11 @@
 	let username: string = '';
 
 	function submit() {
+		plausible.trackEvent('submit', {
+			props: {
+				username
+			}
+		});
 		goto(`/${username}`);
 	}
 </script>
