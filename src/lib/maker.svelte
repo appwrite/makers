@@ -50,7 +50,7 @@
 
 <figure>
 	{#if image}
-		<img src={image} alt={`GitHub ${username}`} style={fancy3d ? style : ''} in:fade />
+		<img id="maker" src={image} alt={`GitHub ${username}`} style={fancy3d ? style : ''} in:fade />
 		<div class="gradient" class:top in:fade />
 	{/if}
 </figure>
