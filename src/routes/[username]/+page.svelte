@@ -9,6 +9,7 @@
 	import Create from '../create.svelte';
 
 	let showForm: boolean = true;
+	let copyButton = 'copy';
 
 	$: username = $page.params.username;
 	$: shareTwitter = encodeURI(
@@ -21,6 +22,8 @@
 
 	async function copy() {
 		await navigator.clipboard.writeText(embed);
+		copyButton = 'copied';
+		setTimeout(() => copyButton = 'copy', 3500);
 	}
 
 	afterNavigate(({ from, type }) => {
@@ -53,7 +56,7 @@
 				<Modal>
 					<svelte:fragment slot="title">Embed Code</svelte:fragment>
 					<pre>{embed}</pre>
-					<Button on:click={copy}>copy</Button>
+					<Button on:click={copy}>{copyButton}</Button>
 					<svelte:fragment slot="trigger">
 						<span class="link" href={`/${username}`}><Link />embed code</span>
 					</svelte:fragment>
