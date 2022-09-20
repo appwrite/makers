@@ -23,11 +23,12 @@
 		</p>
 	</div>
 	<form on:submit|preventDefault={submit}>
-		<label for="githut">GitHub Username</label>
+		<label for="github">GitHub Username</label>
 		<input
 			name="github"
 			type="text"
 			placeholder="Enter your GitHub Username"
+			autocomplete="off"
 			required
 			bind:value={username}
 		/>

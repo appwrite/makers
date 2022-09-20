@@ -2,6 +2,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Button from '$lib/button.svelte';
+	import Embedded from '$lib/embedded.svelte';
 	import Link from '$lib/link.svelte';
 	import Maker from '$lib/maker.svelte';
 	import Modal from '$lib/modal.svelte';
@@ -50,7 +51,10 @@
 		<Maker {username} fancy3d top />
 		<ul>
 			<li>
-				<a href={`https://twitter.com/intent/tweet?text=${shareTwitter}`}><Twitter />tweet it</a>
+				<a href={`https://twitter.com/intent/tweet?text=${shareTwitter}`}><Twitter />Tweet it</a>
+			</li>
+			<li>
+				<a href={`https://makers.appwrite.io/${username}`}><Link />Share link</a>
 			</li>
 			<li>
 				<Modal>
@@ -58,7 +62,7 @@
 					<pre>{embed}</pre>
 					<Button on:click={copy}>{copyButton}</Button>
 					<svelte:fragment slot="trigger">
-						<span class="link" href={`/${username}`}><Link />embed code</span>
+						<span class="link" href={`/${username}`}><Embedded />Embedded</span>
 					</svelte:fragment>
 				</Modal>
 			</li>
