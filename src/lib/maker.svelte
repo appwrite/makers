@@ -13,6 +13,7 @@
 	const isTouchDevice =
 		browser && ('ontouchstart' in globalThis || globalThis.navigator.maxTouchPoints > 0);
 
+	let error: string | null;
 	let image: string | null;
 	let degreeX: number = 0;
 	let degreeY: number = 0;
@@ -34,10 +35,20 @@
 		}
 
 		image = null;
-		const response = await fetch(src, {
-			mode: 'cors'
-		});
-		image = URL.createObjectURL(await response.blob());
+		try {
+			const response = await fetch(src, {
+				mode: 'cors'
+			});
+			if (response.status >= 500) {
+				throw new Error('Server Error');
+			} else if (response.status === 404) {
+				throw new Error(`User '${username}' not found`);
+			}
+
+			image = URL.createObjectURL(await response.blob());
+		} catch (e) {
+			error = (e as Error).message;
+		}
 	}
 
 	$: src = walter
@@ -51,12 +62,16 @@
 
 <svelte:body on:mousemove={mousemove} />
 
-<figure>
-	{#if image}
-		<img id="maker" src={image} alt={`GitHub ${username}`} style={fancy3d ? style : ''} in:fade />
-		<div class="gradient" class:top in:fade />
-	{/if}
-</figure>
+{#if error}
+	<h2>{error}</h2>
+{:else}
+	<figure>
+		{#if image}
+			<img id="maker" src={image} alt={`GitHub ${username}`} style={fancy3d ? style : ''} in:fade />
+			<div class="gradient" class:top in:fade />
+		{/if}
+	</figure>
+{/if}
 
 <style lang="scss">
 	@use 'mixins';

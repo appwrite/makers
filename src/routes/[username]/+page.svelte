@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Button from '$lib/button.svelte';
 	import Link from '$lib/link.svelte';
@@ -6,6 +7,8 @@
 	import Modal from '$lib/modal.svelte';
 	import Twitter from '$lib/twitter.svelte';
 	import Create from '../create.svelte';
+
+	let showForm: boolean = true;
 
 	$: username = $page.params.username;
 	$: shareTwitter = encodeURI(
@@ -19,6 +22,12 @@
 	async function copy() {
 		await navigator.clipboard.writeText(embed);
 	}
+
+	afterNavigate(({ from, type }) => {
+		if (from !== null && type === 'goto') {
+			showForm = false;
+		}
+	});
 </script>
 
 <svelte:head>
@@ -53,9 +62,11 @@
 		</ul>
 	</div>
 </div>
-<div class="create">
-	<Create full />
-</div>
+{#if showForm}
+	<div class="create">
+		<Create full />
+	</div>
+{/if}
 
 <Modal />
 

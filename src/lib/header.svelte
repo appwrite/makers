@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from './logo.png';
+	import Logo from './appwrite.svg';
 </script>
 
 <header>
