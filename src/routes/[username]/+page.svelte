@@ -51,10 +51,14 @@
 		<Maker {username} fancy3d top />
 		<ul>
 			<li>
-				<a href={`https://twitter.com/intent/tweet?text=${shareTwitter}`}><Twitter />Tweet it</a>
+				<a href={`https://twitter.com/intent/tweet?text=${shareTwitter}`} target="_blank">
+					<Twitter />Tweet it
+				</a>
 			</li>
 			<li>
-				<a href={`https://makers.appwrite.io/${username}`}><Link />Share link</a>
+				<a href={`https://makers.appwrite.io/${username}`} target="_blank">
+					<Link />Share link
+				</a>
 			</li>
 			<li>
 				<Modal>
