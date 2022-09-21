@@ -56,11 +56,6 @@
 				</a>
 			</li>
 			<li>
-				<a href={`https://makers.appwrite.io/${username}`} target="_blank">
-					<Link />Share link
-				</a>
-			</li>
-			<li>
 				<Modal>
 					<svelte:fragment slot="title">Embed Code</svelte:fragment>
 					<pre>{embed}</pre>
