@@ -1,25 +1,28 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
-	import Button from '$lib/button.svelte';
-	import Embedded from '$lib/embedded.svelte';
-	import Link from '$lib/link.svelte';
-	import Maker from '$lib/maker.svelte';
-	import Modal from '$lib/modal.svelte';
-	import Twitter from '$lib/twitter.svelte';
+	import { page } from '$app/state';
+	import Button from '#lib/button.svelte';
+	import Embedded from '#lib/embedded.svelte';
+	import Maker from '#lib/maker.svelte';
+	import Modal from '#lib/modal.svelte';
+	import Twitter from '#lib/twitter.svelte';
 	import Create from '../create.svelte';
 
-	let showForm: boolean = true;
-	let copyButton = 'copy';
+	let showForm = $state(true);
+	let copyButton = $state('copy');
 
-	$: username = $page.params.username;
-	$: shareTwitter = encodeURI(
-		`We are all the makers of @Appwrite! Open source allows all of us to collaborate and build better software together!\n\nYou can check out my maker card here: https://makers.appwrite.io/${username}`
+	const username = $derived(page.params.username);
+	const shareTwitter = $derived(
+		encodeURI(
+			`We are all the makers of @Appwrite! Open source allows all of us to collaborate and build better software together!\n\nYou can check out my maker card here: https://makers.appwrite.io/${username}`
+		)
 	);
 
-	$: embed = `<a href="${globalThis.location?.href}">
+	const embed = $derived(
+		`<a href="${globalThis.location?.href}">
     <img src="https://appwrite.io/cards/makers/${username}" alt="${username}'s Maker Card" />
-</a>`;
+</a>`
+	);
 
 	async function copy() {
 		await navigator.clipboard.writeText(embed);
@@ -61,7 +64,7 @@
 					<pre>{embed}</pre>
 					<Button on:click={copy}>{copyButton}</Button>
 					<svelte:fragment slot="trigger">
-						<span class="link" href={`/${username}`}><Embedded />Embedded</span>
+						<span class="link"><Embedded />Embedded</span>
 					</svelte:fragment>
 				</Modal>
 			</li>

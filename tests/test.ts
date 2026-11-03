@@ -1,5 +1,15 @@
 import { expect, test } from '@playwright/test';
 
+test.beforeEach(async ({ page }) => {
+	await page.route('https://appwrite.io/cards/makers/**', (route) => {
+		const headers = { 'access-control-allow-origin': '*' };
+		if (new URL(route.request().url()).pathname.endsWith('/linux')) {
+			return route.fulfill({ status: 404, headers });
+		}
+		return route.fulfill({ status: 200, headers, path: 'src/lib/walter.png' });
+	});
+});
+
 test('form will redirect and display card', async ({ page }) => {
 	await page.goto('/');
 	expect(await page.locator('input').fill('TorstenDittmann'));

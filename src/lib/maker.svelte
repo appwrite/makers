@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { fade } from 'svelte/transition';
 	import WalterCard from './walter.png';
 
@@ -68,7 +68,7 @@
 	<figure>
 		{#if image}
 			<img id="maker" src={image} alt={`GitHub ${username}`} style={fancy3d ? style : ''} in:fade />
-			<div class="gradient" class:top in:fade />
+			<div class="gradient" class:top in:fade></div>
 		{/if}
 	</figure>
 {/if}
