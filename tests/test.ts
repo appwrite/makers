@@ -33,3 +33,17 @@ test('unknown username', async ({ page }) => {
 	await page.goto('/linux');
 	await page.waitForSelector("text=User 'linux' not found");
 });
+
+test('changing username on the maker page updates the card', async ({ page }) => {
+	await page.goto('/TorstenDittmann', { waitUntil: 'networkidle' });
+	await expect(page).toHaveTitle("TorstenDittmann's Maker Card");
+	await page.locator('input').fill('linux');
+	await page.locator('button[type=submit]').click();
+	await page.waitForURL('/linux');
+	await expect(page).toHaveTitle("linux's Maker Card");
+	await expect(page.getByRole('link', { name: 'Tweet it' })).toHaveAttribute(
+		'href',
+		/makers\.appwrite\.io\/linux$/
+	);
+	await page.waitForSelector("text=User 'linux' not found");
+});
