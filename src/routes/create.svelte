@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { plausible } from '$lib/analytics';
-	import Button from '$lib/button.svelte';
-	import Card from '$lib/card.svelte';
+	import { plausible } from '#lib/analytics.js';
+	import Button from '#lib/button.svelte';
+	import Card from '#lib/card.svelte';
 
 	export let full: boolean = false;
 

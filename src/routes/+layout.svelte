@@ -1,6 +1,11 @@
 <script lang="ts">
-	import Header from '$lib/header.svelte';
-	import { plausible } from '$lib/analytics';
+	import '@fontsource/poppins/index.css';
+	import '@fontsource/poppins/400.css';
+	import '@fontsource/poppins/600.css';
+	import '@fontsource/inter/400.css';
+	import '@fontsource/inter/600.css';
+	import Header from '#lib/header.svelte';
+	import { plausible } from '#lib/analytics.js';
 
 	plausible?.enableAutoPageviews();
 </script>
@@ -29,12 +34,6 @@
 </main>
 
 <style lang="scss">
-	@import '@fontsource/poppins/index.css';
-	@import '@fontsource/poppins/400.css';
-	@import '@fontsource/poppins/600.css';
-	@import '@fontsource/inter/400.css';
-	@import '@fontsource/inter/600.css';
-
 	:global(body) {
 		background-color: #14141f;
 		margin: 0;

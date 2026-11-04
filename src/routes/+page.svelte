@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Maker from '$lib/maker.svelte';
+	import Maker from '#lib/maker.svelte';
 	import Create from './create.svelte';
 </script>
 
